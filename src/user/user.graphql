@@ -1,0 +1,20 @@
+# to deprecated reason in the introspection
+# directive @deprecated(
+#   reason: String = "No longer supported"
+# ) on FIELD_DEFINITION | ENUM_VALUE
+
+"""USER TYPE"""
+type User{
+  #This lower line is the DESCRIPTION OF THE FIELD
+  """id of a user"""
+  id: ID 
+  # Name of the user in string
+  name: String
+  # Age of the user in Integer
+  age: Int @deprecated(reason: "Use `abc`.") 
+}
+
+type Query{
+  users: [User],
+  user(userId: ID!): User
+}
